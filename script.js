@@ -40,33 +40,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let compWins = 0;
-    let playWins = 0;
-    for (let i = 0; i < 5; i++) {
-        let playSelect = prompt("Rock, Paper, or Scissors?");
-        let play = playRound(playSelect, getComputerChoice());
-        console.log(play);
-        if (play[4] == 'L') {
-            compWins++;
-        }
-        else if (play[4] == 'W') {
-            playWins++;
-        }
-        console.log(`You have ${playWins} wins, the computer has ${compWins} wins`);
-    }
-
-    if (playWins > compWins) {
-        console.log("You win!");
-    }
-    else if (compWins > playWins) {
-        console.log("You lose!");
-    }
-    else {
-        console.log("It's a tie!");
-    }
-}
-
 const buttons = document.querySelectorAll('main > button');
 const resultdiv = document.querySelector('.results');
 let results = document.createElement('h2');
