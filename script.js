@@ -67,4 +67,36 @@ function game() {
     }
 }
 
-game();
+const buttons = document.querySelectorAll('main > button');
+const resultdiv = document.querySelector('.results');
+let results = document.createElement('h2');
+let log = document.createElement('h2');
+let final = document.createElement('h2');
+resultdiv.appendChild(results);
+resultdiv.appendChild(log);
+resultdiv.appendChild(final);
+
+let compWins = 0;
+let playWins = 0;
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let restext = playRound(button.className, getComputerChoice());
+        results.textContent = restext;
+        if (restext[4] == 'L') {
+            compWins++;
+        }
+        else if (restext[4] == 'W') {
+            playWins++;
+        }
+        log.textContent = `You have ${playWins} wins, the computer has ${compWins} wins`;
+        if (compWins >= 5) {
+            final.textContent = "You Lose!";
+        }
+        else if (playWins >= 5) {
+            final.textContent = "You Win!";
+        }
+    });
+});
+
+    
